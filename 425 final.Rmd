@@ -1,0 +1,12 @@
+---
+title: "425 final"
+author: "Adrian Pizano"
+date: "12/5/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## test 
