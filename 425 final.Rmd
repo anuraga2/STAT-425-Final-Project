@@ -1,12 +1,54 @@
 ---
 title: "425 final"
 author: "Adrian Pizano"
-date: "12/5/2021"
-output: pdf_document
+date: "12/4/2021"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## test 
+## Setting up data
+
+```{r}
+data=readxl::read_xlsx("Real_estate_valuation_data_set.xlsx")
+
+month_names = c("aug","sep","oct","nov","dec","jan","feb","mar","apr","may","june","july")
+months = sort(unique(data$`X1 transaction date`))
+#both should be in same order and matched up already
+
+data$ `X7 transaction month`= rep(0,length(data$`X1 transaction date` ))
+
+for (i in 1:12){
+data$`X7 transaction month`[data$`X1 transaction date`==months[i]] = month_names[i]
+}
+
+#remove row number column
+data= data[,-1]
+```
+
+## Section 1: Intro
+
+
+## Section 2: Exporatory Data Analysis
+
+```{r}
+data$`X1 transaction date` = as.factor(data$`X1 transaction date`)
+data$`X7 transaction month` = as.factor(data$`X7 transaction month`)
+#reorganize cols
+data = data[,c(1,2,3,4,5,6,8,7)]
+
+pairs(data)
+cor(data)
+
+
+```
+Two categorical variables. Rest (five) are quantitative.
+
+```{r}
+for(i in 1:length(data[1,])){
+  print(sum(is.na(data[,i])))
+}
+```
+
