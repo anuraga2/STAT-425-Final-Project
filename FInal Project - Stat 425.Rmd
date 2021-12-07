@@ -321,6 +321,12 @@ colnames(pcr_train_df) = c("PC1","PC2","PC3","PC4","PC5","house_price")
 pcr_mod = lm(house_price ~ ., data = pcr_train_df)
 summary(pcr_mod)
 ```
+Summary Statistics:
+  - 96% of variation captured with 5 principle components
+Scree Plot:
+  - Elbow at PC4
+Testing Error:
+  - Lowest prediction error around 5 PC's
 
 ```{r}
 # Changing the test data set
